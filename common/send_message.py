@@ -3,7 +3,7 @@ import requests
 from common.dirs import LOGS_DIR, LOG_FILE
 from common.logger import logger
 import re
-
+# from common.get_secrets import get_secrets
 
 def log_reader():
     with open(LOG_FILE, 'r', encoding="UTF-8") as lg:
@@ -34,4 +34,6 @@ def send_message(send_key):
 
 
 if __name__ == '__main__':
-    send_message()
+    # key = get_secrets('SERVERPUSHKEY')
+    # send_message(key)
+    send_message(key)
