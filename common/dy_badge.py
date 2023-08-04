@@ -1,7 +1,7 @@
 # encoding:utf-8
 from common.douyu_request import dyreq
 from common.logger import logger
-from common.send_message import bank_send
+from common.send_message import send_message
 from lxml import etree
 import re
 import math
@@ -49,9 +49,9 @@ def get_need_exp(print_sentence):
     for i in range(len(get_badge()[1])):
         logger.info("房间号%s升级还需%s点经验" % (get_room_list()[i], get_badge()[1][i]))
         if "成功" in print_sentence[get_room_list()[i]]:
-            bank_send(True, print_sentence[get_room_list()[i]] + "，升级还需%s点经验" % (get_badge()[1][i]))
+            send_message(True, print_sentence[get_room_list()[i]] + "，升级还需%s点经验" % (get_badge()[1][i]))
         else:
-            bank_send(False, print_sentence[get_room_list()[i]])
+            send_message(False, print_sentence[get_room_list()[i]])
 
 
 

@@ -11,7 +11,7 @@ from webdriver_manager.chrome import ChromeDriverManager
 
 from common.douyu_request import dyreq
 from common.logger import logger
-from common.send_message import mail_send, bank_send
+from common.send_message import send_message
 
 Bags = 0
 Own = 0
@@ -54,8 +54,7 @@ def get_glow():
         else:
             error = '领取荧光棒时发生错误'
             logger.error(error)
-        bank_send(False, error)
-        mail_send(error)
+        send_message(False, error)
         logger.info("------背包检查结束------")
     return glow_res
 
