@@ -69,9 +69,11 @@ def bank_send(success, message):
     mode = int(conf.get_conf("SendMode")['banksend'])
     if mode == 1:
         title = success and 'GitHub Action Success' or 'GitHub Action Failure'
-        barkurl = get_secrets('BARKURL')
-        if barkurl.startswith('https'):
-            requests.get(barkurl + '/' + title + '/' + message + '?group=Douyu Donate')
+        # barkurl = get_secrets('BARKURL')
+        server_key = get_secrets("SERVERPUSHKEY")
+        url = f'https://sctapi.ftqq.com/{server_key}.send?title={title}'
+        if url.startswith('https'):
+            requests.get(url + '/' + title + '/' + message + '?group=Douyu Donate')
 
 if __name__ == '__main__':
     send_message()
