@@ -1,4 +1,4 @@
-name: Daily donate in 12306
+name: Daily Donate
 
 on:
   push:
@@ -6,8 +6,7 @@ on:
       - master
   workflow_dispatch: 
   schedule:
-    - cron: '02 16 * * *'
-    - cron: '02 19 * * *'
+    - cron: '00 12 * * *'
 
 jobs:
   dy_auto_donate_helper:
@@ -24,7 +23,10 @@ jobs:
       - name: 'Working'
         env:
           SERVERPUSHKEY: ${{ secrets.SERVERPUSHKEY }}
-          COOKIES: ${{ secrets.COOKIES }}
           BARKURL: ${{ secrets.BARKURL }}
+          COOKIES: ${{ secrets.COOKIES }}
+          MAILSEND: ${{ secrets.MAILSEND }}
+          PASSWORD: ${{ secrets.PASSWORD }}
+          MAILGET: ${{ secrets.MAILGET }}
         run: |
           python main.py
